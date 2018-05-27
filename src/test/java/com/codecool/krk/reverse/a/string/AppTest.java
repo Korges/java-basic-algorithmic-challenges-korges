@@ -1,5 +1,6 @@
 package com.codecool.krk.reverse.a.string;
 
+import com.codecool.krk.BasicAlgorithms;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,7 +9,7 @@ class AppTest {
     @Test
     void reverseStringTest() {
 
-        String result = App.reverseString("hello");
+        String result = BasicAlgorithms.reverseString("hello");
 
         assertTrue(result instanceof String);
     }
@@ -16,7 +17,7 @@ class AppTest {
     @Test
     void reverseStringTest2() {
 
-        String result = App.reverseString("hello");
+        String result = BasicAlgorithms.reverseString("hello");
         String expected = "olleh";
 
         assertEquals(expected, result);
@@ -25,7 +26,7 @@ class AppTest {
     @Test
     void reverseStringTest3() {
 
-        String result = App.reverseString("Howdy");
+        String result = BasicAlgorithms.reverseString("Howdy");
         String expected = "ydwoH";
 
         assertEquals(expected, result);
@@ -34,7 +35,7 @@ class AppTest {
     @Test
     void reverseStringTest4() {
 
-        String result = App.reverseString("Greetings from Earth");
+        String result = BasicAlgorithms.reverseString("Greetings from Earth");
         String expected = "htraE morf sgniteerG";
 
         assertEquals(expected, result);
