@@ -3,7 +3,7 @@ package com.codecool.krk;
 public class BasicAlgorithms {
 
 
-     public static Integer factorializeNumber(Integer number) {
+    public static Integer factorializeNumber(Integer number) {
 
         if (number == 0) {
             return 1;
@@ -12,14 +12,14 @@ public class BasicAlgorithms {
         }
     }
 
-     public static String reverseString(String givenString) {
+    public static String reverseString(String givenString) {
 
-        String reversedString = "";
+        StringBuilder reversedString = new StringBuilder();
 
         for (int i = givenString.length(); i > 0;) {
-            reversedString += givenString.charAt(--i);
+            reversedString.append(givenString.charAt(--i));
         }
-        return reversedString;
+        return reversedString.toString();
     }
 
      public static boolean checkForPalindromes(String givenString) {
@@ -50,16 +50,61 @@ public class BasicAlgorithms {
     public static String titleCaseSentence(String givenString) {
 
         givenString = givenString.toLowerCase();
-        String capitalizedString = String.valueOf(givenString.charAt(0)).toUpperCase();
+        StringBuilder capitalizedString = new StringBuilder(String.valueOf(givenString.charAt(0)).toUpperCase());
 
         for (int i = 1; i < givenString.length(); i++) {
             if (String.valueOf(givenString.charAt(i-1)).equals(" ")) {
-                capitalizedString += givenString.toUpperCase().charAt(i);
+                capitalizedString.append(givenString.toUpperCase().charAt(i));
             } else {
-                capitalizedString += givenString.charAt(i);
+                capitalizedString.append(givenString.charAt(i));
             }
         }
-        return capitalizedString;
+        return capitalizedString.toString();
+    }
+
+    public static int[] largestOfFour(int[][] array) {
+
+        int position = 0;
+        int[] arrayWithMaxNumber = new int[4];
+
+        for(int[] subArray : array) {
+
+            int maxInArray = 0;
+
+            for (int number : subArray) {
+                if (number > maxInArray) {
+                    maxInArray = number;
+                }
+            }
+            arrayWithMaxNumber[position++] = maxInArray;
+        }
+
+        return arrayWithMaxNumber;
+    }
+
+    public static boolean confirmEnding(String givenString, String ending) {
+
+        for (int i = 0; i < ending.length(); i++) {
+            if (ending.charAt(ending.length() - i - 1)
+                    != givenString.charAt(givenString.length() - i - 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static String repeatStringNumTimes(String givenString, int multiply) {
+
+        StringBuilder sb = new StringBuilder();
+        if (multiply > 1) {
+            for (int i = 0; i < multiply; i++) {
+                sb.append(givenString);
+            }
+            return String.valueOf(sb);
+        } else if (multiply == 1) {
+            return givenString;
+        }
+        return "";
     }
 }
 
