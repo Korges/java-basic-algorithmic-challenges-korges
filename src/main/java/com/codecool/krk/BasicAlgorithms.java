@@ -47,6 +47,19 @@ public class BasicAlgorithms {
          return maxLength;
     }
 
+    public static String titleCaseSentence(String givenString) {
 
+        givenString = givenString.toLowerCase();
+        String capitalizedString = String.valueOf(givenString.charAt(0)).toUpperCase();
+
+        for (int i = 1; i < givenString.length(); i++) {
+            if (String.valueOf(givenString.charAt(i-1)).equals(" ")) {
+                capitalizedString += givenString.toUpperCase().charAt(i);
+            } else {
+                capitalizedString += givenString.charAt(i);
+            }
+        }
+        return capitalizedString;
+    }
 }
 
