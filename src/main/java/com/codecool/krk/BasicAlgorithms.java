@@ -1,5 +1,13 @@
 package com.codecool.krk;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static java.lang.Float.NaN;
+import static jdk.nashorn.internal.objects.Global.undefined;
+
+
 public class BasicAlgorithms {
 
 
@@ -22,16 +30,16 @@ public class BasicAlgorithms {
         return reversedString.toString();
     }
 
-     public static boolean checkForPalindromes(String givenString) {
+    public static boolean checkForPalindromes(String givenString) {
 
-        String onlyLetters = givenString.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+         String onlyLetters = givenString.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-        for (int i = 0; i < onlyLetters.length()/2; i++) {
-            if (onlyLetters.charAt(i) != onlyLetters.charAt(onlyLetters.length() - 1 - i)) {
-                return false;
-            }
-        }
-        return true;
+         for (int i = 0; i < onlyLetters.length()/2; i++) {
+             if (onlyLetters.charAt(i) != onlyLetters.charAt(onlyLetters.length() - 1 - i)) {
+                 return false;
+             }
+         }
+         return true;
     }
 
     public static Integer findLongestWord(String givenString) {
@@ -106,5 +114,90 @@ public class BasicAlgorithms {
         }
         return "";
     }
+
+    public static String truncateString(String givenString, int maxLength) {
+
+        StringBuilder sb = new StringBuilder();
+        if (givenString.length() == maxLength) {
+            return givenString;
+        }
+        for (int i = 0; i < maxLength - 3; i++) {
+            sb.append(givenString.charAt(i));
+        }
+        return sb.append("...").toString();
+    }
+
+    public static Object[] slasher(Object[] array, int slash) {
+
+        if (slash < 0 || slash > array.length) slash = array.length;
+        int position = 0;
+        Object[] slashed = new Object[array.length-slash];
+
+        for (int i = slash; i < array.length; i++) {
+            slashed[position++] = array[i];
+        }
+
+        return slashed;
+    }
+
+    public static Object[] bouncer(Object[] givenArray) {
+
+        List<Object> falsyValues = Arrays.asList(false, null, 0, "",undefined , NaN);
+        List<Object> temp = new ArrayList<>();
+        for (Object obj : givenArray) {
+            if (falsyValues.contains(obj)) continue;
+            temp.add(obj);
+        }
+
+        return temp.toArray();
+    }
+
+    public static Object[] destroyer(Object[] givenArray, Object... numbers) {
+
+        List<Object> toRemove = Arrays.asList(numbers);
+        List<Object> temp = new ArrayList<>();
+        for (Object obj : givenArray) {
+            if (toRemove.contains(obj)) continue;
+            temp.add(obj);
+        }
+
+        return temp.toArray();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
