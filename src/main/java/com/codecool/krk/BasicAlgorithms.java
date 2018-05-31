@@ -164,40 +164,42 @@ public class BasicAlgorithms {
         return temp.toArray();
     }
 
+    public static int getIndexToIns(Float[] givenArray, float number) {
 
+        float temp;
 
+        for (int i = 0; i < givenArray.length; i++) {
+            for (int j = 1; j < givenArray.length - i; j++) {
+                if (givenArray[j-1] > givenArray[j]) {
+                    temp = givenArray[j-1];
+                    givenArray[j-1] = givenArray[j];
+                    givenArray[j] = temp;
+                }
+            }
+        }
 
+        int index;
+        for (index = 0; index < givenArray.length; index++) {
+            if (number <= givenArray[index]) {
+                return index;
+            }
+        }
 
+        return index;
+    }
 
+    public static String rot13(String givenString) {
 
+        StringBuilder sb = new StringBuilder();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        for (int i = 0; i < givenString.length(); i++) {
+            char c = givenString.charAt(i);
+            if       (c >= 'A' && c <= 'M') c += 13;
+            else if  (c >= 'N' && c <= 'Z') c -= 13;
+            sb.append(c);
+        }
+        return String.valueOf(sb);
+    }
 
 }
 
